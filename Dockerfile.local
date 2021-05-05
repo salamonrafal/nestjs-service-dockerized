@@ -3,7 +3,7 @@ FROM node:12.18.1
 WORKDIR /service
 
 COPY . .
-COPY ./docker/.env.prod .env
+COPY ./docker/.env.dev .env
 
 RUN npm install
 

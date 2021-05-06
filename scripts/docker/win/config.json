@@ -1,0 +1,25 @@
+{
+  "actions": {
+    "help_message": {
+      "script": "Get-Action-Help-Message",
+      "args": []
+    },
+    "build":  {
+      "script": "New-Docker-Image -arg_env {arg_env}",
+      "args": [
+        "arg_env"
+      ]
+    },
+    "create_container": {
+      "script": "New-Docker-Container -arg_env {arg_env}",
+      "args": [
+        "arg_env"
+      ]
+    },
+    "ports": {
+      "script": "Get-Application-Port",
+      "args": []
+    }
+  },
+  "defaultAction": "help_message"
+}

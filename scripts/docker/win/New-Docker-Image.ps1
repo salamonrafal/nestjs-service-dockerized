@@ -1,5 +1,4 @@
 # docker build -t nestjs-services-<env>[:version] -f Dockerfile[.local]
-
 $current_location = Get-Location
 
 . "$current_location\scripts\docker\win\Commons.ps1"
@@ -7,26 +6,20 @@ $current_location = Get-Location
 function New-Docker-Image
 {
     param(
-        [string] $args_env
+        [string] $arg_env
     )
 
     $envs = @{ development = ".local"; production = "" }
     $env = "production"
-    $service_name = Get-Application-Name
-    $service_version = Get-Application-Version
-    $cmd_service_version = ""
+    $image_name = Set-Image-Name -arg_env $arg_env
     $cmd_local_dockerfile = "";
 
-    if ($args_env -ne '' -AND $envs.ContainsKey($args_env)) {
-        $env = $args_env
+    if ($arg_env -ne '' -AND $envs.ContainsKey($arg_env)) {
+        $env = $arg_env
         $cmd_local_dockerfile = $envs[$env]
     }
 
-    if ($service_version -ne '') {
-        $cmd_service_version = ":$service_version"
-    }
-
-    $cmd = "docker build -t $service_name-$env$cmd_service_version -f Dockerfile$cmd_local_dockerfile ."
+    $cmd = "docker build -t $image_name -f Dockerfile$cmd_local_dockerfile ."
 
     Write-Verbose -Message "Run command: $cmd"
     Invoke-Expression $cmd

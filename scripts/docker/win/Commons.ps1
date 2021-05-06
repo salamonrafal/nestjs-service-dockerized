@@ -24,3 +24,15 @@ function Get-Application-Name
 
     return $json.name
 }
+
+function Set-Image-Name
+{
+    param (
+        [string] $arg_env
+    )
+
+    $service_name = Get-Application-Name
+    $service_version = Get-Application-Version
+
+    return $service_name + "-" + $arg_env + ":" + $service_version
+}

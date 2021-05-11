@@ -1,10 +1,19 @@
-# docker build -t nestjs-services-<env>[:version] -f Dockerfile[.local]
-$current_location = Get-Location
-
-. "$current_location\scripts\docker\win\Commons.ps1"
-
 function New-Docker-Image
 {
+<#
+.SYNOPSIS
+Command create new docker image
+
+.DESCRIPTION
+
+.PARAMETER
+
+.NOTES
+Author: Rafal Salamon <rasa@salamonrafal.pl>
+
+.EXAMPLE
+
+#>
     param(
         [string] $arg_env
     )

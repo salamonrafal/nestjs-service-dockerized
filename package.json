@@ -68,6 +68,8 @@
     "testEnvironment": "node"
   },
   "docker": {
-    "ports": ["3000","3000"]
+    "ports": ["3000","3000"],
+    "volume": ["./logs"],
+    "containerName": "nestjs-example"
   }
 }

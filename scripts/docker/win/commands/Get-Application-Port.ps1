@@ -1,9 +1,19 @@
-$current_location = Get-Location
-
-. "$current_location\scripts\docker\win\Commons.ps1"
-
 function Get-Application-Port
 {
+<#
+.SYNOPSIS
+Command display port used to run application
+
+.DESCRIPTION
+
+.PARAMETER
+
+.NOTES
+Author: Rafal Salamon <rasa@salamonrafal.pl>
+
+.EXAMPLE
+
+#>
     Write-Verbose -Message "Show docker container ports"
 
     $ports = Get-Application-Ports

@@ -147,7 +147,7 @@ $command
     for ($i= 0; $i -lt $arg_params_name.length; $i++) {
         $name = "{" + $arg_params_name[$i] + "}"
         $value = $arg_param_value[$i]
-
+        $value = $value -replace """",""""""
         $cmd = $cmd -replace $name,$value
     }
 
@@ -180,17 +180,26 @@ Run-Command-Action
 #>
     param (
         [string] $arg_action,
-        [string] $arg_env
+        [string] $arg_env,
+        [string[]] $arg_params
     )
 
     $action = Get-Action-Config -arg_action $arg_action
+
 
     if ($action -eq $FALSE) {
         $defaultAction = Get-Default-Action
         $action = Get-Action-Config -arg_action $defaultAction
         $command = Join-Command-Action-Parameter -arg_cmd_template $action.script
     } else {
-        $command = Join-Command-Action-Parameter -arg_cmd_template $action.script -arg_params_name $action.args -arg_param_value $arg_env
+        $paramsValues = [System.Collections.ArrayList]::new()
+        $in = $paramsValues.Add($arg_env)
+
+        for ($i= 0; $i -lt $arg_params.length; $i++) {
+            $in = $paramsValues.Add($arg_params[$i])
+        }
+
+        $command = Join-Command-Action-Parameter -arg_cmd_template $action.script -arg_params_name $action.args -arg_param_value $paramsValues
     }
 
     Write-Verbose -Message "Run command: $command"

@@ -33,9 +33,10 @@
       ]
     },
     "ssh": {
-      "script": "Run-Command-Docker-Container -arg_env {arg_env}",
+      "script": "Run-Command-Docker-Container -arg_env {arg_env} -arg_command \"{command}\"",
       "args": [
-        "arg_env"
+        "arg_env",
+        "command"
       ]
     },
     "start": {

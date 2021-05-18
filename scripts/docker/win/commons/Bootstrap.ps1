@@ -24,12 +24,14 @@ Run-Bootstrap
     -arg_param_action $(Get-Location)
     -arg_param_action "help"
     -arg_param_env "production"
+    -arg_params "test","test"
 
 #>
     param (
         [string] $arg_root_dir,
         [string] $arg_param_action,
-        [string] $arg_param_env
+        [string] $arg_param_env,
+        [string[]] $arg_params
     )
 
     $root_dir_script = "$($arg_root_dir)\scripts\docker\win"
@@ -50,5 +52,6 @@ Run-Bootstrap
 
     Run-Command-Action `
         -arg_action $arg_param_action `
-        -arg_env $arg_param_env
+        -arg_env $arg_param_env `
+        -arg_params $arg_params
 }

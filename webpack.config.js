@@ -34,6 +34,9 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js', '.jsx'],
         plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.build.json' })],
+        alias: {
+            'express-handlebars': 'handlebars/dist/handlebars.js',
+        },
     },
     plugins: [
         new webpack.IgnorePlugin({

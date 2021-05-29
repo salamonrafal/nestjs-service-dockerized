@@ -1,7 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const LogoContainerStyled = styled.div `
-    width: 100%;
+export const LogoContainerStyled = styled.div`
+  width: 100%;
+  display: block;
+  background-color: #0a0a0a;
+`;
+
+export const LogoImgStyled = styled.img`
     display: block;
-    background-color: #0a0a0a;
-`
+    margin: 0 auto;
+`;
